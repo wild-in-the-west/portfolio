@@ -1,0 +1,215 @@
+\documentclass{article} % Sets global font size to 12pt
+\usepackage{graphicx} % Required for inserting images
+\usepackage{tikz} % imports from the tikz library
+\usepackage{xcolor}
+\usetikzlibrary{fit, shapes, arrows, positioning, calc, decorations.pathreplacing, backgrounds}
+\usepackage[a4paper, margin=0.6in]{geometry}
+\usepackage{hyperref} % Required for clickable hyperlinks
+
+\title{\LARGE Workflow} % Increased font size for the title
+\author{Nina Jones}
+
+\begin{document}
+\maketitle 
+
+\Large % Increased font size for the main text
+The flowchart visually represents the research methodology based on the Enhanced Learning Experience and Knowledge Transfer (ELEKTRA) framework, as outlined by B. Linek et al (2009). It captures the study's iterative process for designing and evaluating pedagogical games, emphasizing the non-linear progression of key phases.
+
+The flowchart outlines eight interconnected phases that guide the development and refinement of game-based learning solutions. These phases begin with the identification of learning objectives and progress through stages such as conceptual design, development, testing, and evaluation. The iterative loops in the flowchart highlight the flexibility and adaptability of the methodology, ensuring that each phase informs and enhances the others.
+
+The 4Ms—macro adaptivity, micro adaptivity, metacognition, and motivation—are central to the flowchart, which serve as the foundation for the study's pedagogical approach. These elements influence the design of educational content, gameplay mechanics, and player engagement strategies. The flowchart visually illustrates how these components interact within the ELEKTRA framework, enabling a cohesive and adaptive approach to game-based learning.
+
+By depicting the methodology in a clear and structured manner, the flowchart serves as a practical tool for understanding the study's systematic approach to integrating educational theory with game design principles.
+
+For more details, refer to the original publication: \href{https://www.researchgate.net/publication/220723842_Game-based_Learning_-_Conceptual_Methodology_for_Creating_Educational_Games}{Game-based Learning - Conceptual Methodology for Creating Educational Games}.
+
+
+
+\newpage
+
+\begin{tikzpicture}[
+    >=stealth,
+    node distance=2cm,
+    square/.style={draw, rectangle, text centered},
+    circlenode/.style={circle, draw, text centered, inner sep=1pt, font=\footnotesize, xshift=-2mm, yshift=-2mm, fill=yellow!50}
+]
+
+% Set font size globally
+\tikzstyle{every node}=[font=\footnotesize]
+
+% Additional node under Level 3 in the complete structure
+\begin{pgfonlayer}{background}
+    \node (additionalNode) [square, fill=cyan!30, minimum width=16.4cm, minimum height=27.4cm, xshift=3.45cm, yshift=-12cm] {};
+    \node [text width=10cm, align=left, anchor=west, xshift=1cm, yshift=-0.5cm, font=\large] at (additionalNode.north west) {\textbf{Constant revision through all phases}};
+    \node (circlenode9) [circlenode, fill=yellow!50,  xshift=-4cm, yshift=1.5cm, font=\large] at (0,0) {8};
+\end{pgfonlayer}
+
+% Node 1
+\node (node1) [square, fill=magenta!20, minimum width=4.8cm, minimum height=0.8cm, xshift=1.6cm, yshift=0cm] at (0,0) {};
+\node [circlenode, font=\large] at (node1.north east) {1};
+\node [text width=5cm, align=left, anchor=west, xshift=1mm, yshift=1mm] at (node1.west) {\textbf{Identify instructional goals}};
+
+% Node 2 (below and to the left of Node 1)
+\node (node2) [square, fill=magenta!20, minimum width=4cm, minimum height=1.5cm, xshift=-2cm, yshift=-2cm] {};
+\node [circlenode, font=\large] at (node2.north east) {2};
+\node [text width=5cm, align=left, anchor=west, xshift=1mm, yshift=1mm] at (node2.west) {\textbf{Instructional analysis, \\ }\textit{-Create knowledge structure \textit{\\-Qualitative approach}}};
+
+% Node 3 (below and to the right of Node 1)
+\node (node3) [square, fill=magenta!20, minimum width=3.9cm, minimum height=2.5cm, xshift=4.4cm, yshift=-2cm] {};
+\node [circlenode, font=\large] at (node3.north east) {3};
+\node [text width=5cm, align=left, anchor=west, xshift=1mm, yshift=1mm] at (node3.west) {\textbf{Analyse learners and \\context of learning, \\ }\textit{-User requirements,\\ -User preferences, \\-User's entry skills}};
+
+% Node 4 (centered directly below Nodes 2 and 3)
+\node (node4) [square, fill=magenta!20, minimum width=5.5cm, minimum height=3.5cm, xshift=0.1cm, yshift=-2.5cm] at ($(node2.south)!0.5!(node3.south)$) {};
+\node [circlenode, font=\large] at (node4.north east) {4};
+\node [text width=5cm, align=left, anchor=west, xshift=1mm, yshift=1mm] at (node4.west) {\textbf{Write performance objectives and decide the overall structure of the game \\ }\textit{-Game chapters \\ -Categorise learning objectives \\-Triple consistency \\ -Learning methods \\ -Performance structure}};
+
+% Arrows with 90-degree curve
+\draw[->] (node1.west) to[out=180,in=90] (node2.north);
+\draw[->] (node1.east) to[out=0,in=90] (node3.north);
+\draw[-] (node2.east) -- (node3.west);
+
+% Manually calculate midpoint between node2 and node3
+\coordinate (midpoint) at ($(node2.east)!0.53!(node3.west)$);
+
+% Draw arrow from midpoint to node4
+\draw[->] (midpoint) -- (node4.north);
+
+% Manual placement of the curly bracket towards east
+\draw[decorate, decoration={brace, amplitude=5pt}, xshift=7cm, yshift=-8.4cm] (0,9) -- (0,1) node[midway, right=3mm, font=\scriptsize, align=center] {};
+
+% Additional nodes to the right of the curly bracket
+\node (node5) [square, minimum width=3.7cm, minimum height=1.5cm, xshift=9.1cm, yshift=-2.5cm, fill=blue!20] {};
+\node [text width=5cm, align=left, anchor=west, xshift=1mm, yshift=1mm, font=\large] at (node5.west) {\textbf{What they \\ are learning}};
+
+\node (node6) [square, minimum width=3.2cm, minimum height=1.2cm, xshift=9.1cm, yshift=-4.1cm, fill=teal!50] {};
+\node [text width=5cm, align=left, anchor=west, xshift=1mm, yshift=1mm, font=\large] at (node6.west) {\textbf{Conception \\ Phase}};
+
+% Node to encompass all nodes
+\node (level1) [draw, dashed, rectangle, inner sep=10pt, fit=(node1) (node2) (node3) (node4) (node5) (node6)] {};
+
+% Content on the top left
+\node [font=\Large, anchor=north west, fill=gray!50] at (level1.north west) {Content};
+
+% Set font size globally
+\tikzstyle{every node}=[font=\footnotesize]
+
+\node (circlenode5) [circlenode, fill=yellow!50, xshift=6.8cm, yshift=-8cm, font=\large] at (0,0) {5};
+
+% Node 7
+\node (node7) [square, fill=lime!20, minimum width=4cm, minimum height=3.2cm, xshift=1.3cm, yshift=-9.8cm] {};
+\node [text width=5cm, align=left, anchor=west, xshift=1mm, yshift=1mm] at (node7.west) {\textbf{Didactic design\\ }\textit{Learning situations \\   \quad(-Macroadaptivity\\ \quad-metacognition\\   \quad-microadaptivity \\\quad \quad(-pedagogical rules\\ \quad \quad -adaptive elements))}};
+
+
+% Node 8
+\node (node8) [square, fill=lime!20, minimum width=4.7cm, minimum height=3.5cm, xshift=-1.6cm, yshift=-14.3cm] {};
+\node [text width=5cm, align=left, anchor=west, xshift=1mm, yshift=1mm] at (node8.west) {\textbf{Design In-Game \\Assessment, \\}\textit{-Assessment methods (e.g hints)\\ 
+-Validation methods (e.g points) \\ -Microadaptivity \\ \quad(-Update learner model\\ \quad-update assessment \\ \quad-adapt changes)}};
+
+% Node 9
+\node (node9) [square, fill=lime!20, minimum width=5cm, minimum height=3.5cm, xshift=4.2cm, yshift=-14.3cm] {};
+\node [text width=5cm, align=left, anchor=west, xshift=1mm, yshift=1mm] at (node9.west) {\textbf{Design story-based game \\}\textit{-Immersive challenges \\ -Gameplay situations \\ -Background story \\ -Characters \\-Storytelling situations}};
+
+\begin{pgfonlayer}{background}
+% Box for Level 2 Additional Nodes ()box-in-box)
+\node (level2nodes) [draw, rectangle, inner sep=10pt, fill=pink!20, minimum width=9cm, minimum height=6.5cm, xshift=1.3cm, yshift=-12cm] {};
+
+\draw[-] (node7.south) -- (node8.north);
+\draw[-] (node7.south) -- (node9.north);
+\draw[-] (node8.east) -- (node9.west);
+
+
+% Manual placement of the curly bracket towards east
+\draw[decorate, decoration={brace, amplitude=5pt}, xshift=7.0cm, yshift=-17.3cm] (0,9) -- (0,1) node[midway, right=3mm, font=\scriptsize, align=center] {};
+
+
+% Additional nodes to the right of the curly bracket
+%node10
+\node (node10) [square, minimum width=3.7cm, minimum height=1.5cm, xshift=9.1cm, yshift=-11.4cm, fill=blue!20] {};
+\node [text width=5cm, align=left, anchor=west, xshift=1mm, yshift=1mm, font=\large] at (node10.west) {\textbf{How they \\ are learning}};
+
+%node11
+\node (node11) [square, minimum width=3.2cm, minimum height=1cm, xshift=9.1cm, yshift=-12.9cm, fill=teal!50] {};
+\node [text width=5cm, align=left, anchor=west, xshift=1mm, yshift=1mm, font=\large] at (node11.west) {\textbf{Design Phase}};
+
+% Node 13 (circle)
+\node (circle3) [circle, draw, fill=orange!60, minimum size=4cm, xshift=-1.5cm, yshift=-10.8cm] at (0,0) {};
+\node (m1) at (-1.5cm, -9.3cm) {\Large M1};
+\node (m2) at (-2.8cm, -10.8cm) {\Large M2};
+\node (m3) at (-1.5cm, -11.8cm) {\Large M3};
+
+
+
+% Node 14 (circle)
+\node (circle4) [circle, draw, fill=orange!60, minimum size=2.5cm, xshift=5.5cm, yshift=-11.7cm, font=\Large] at (0,0) {M4};
+\end{pgfonlayer}
+
+% Node to encompass all nodes
+\node (level2) [draw, dashed, rectangle, inner sep=10pt, fit=(node7) (node8) (node9) (node10) (node11)] {};
+
+% Content on the top left
+\node [font=\Large, anchor=north west, fill=gray!50] at (level2.north west) {Learning};
+
+
+% Additional nodes for Level 3
+% Node 15
+\node (node15) [square, fill=orange!20, minimum width=5cm, minimum height=2.5cm, xshift=1.3cm, yshift=-18.3cm] {};
+\node [circlenode, font=\large] at (node15.north east) {6};
+\node [text width=5cm, align=left, anchor=west, xshift=1mm, yshift=1mm] at (node15.west) {\textbf{Production and Development}\\
+\textit{-Technology development \\
+-Content production \\
+-Game release}};
+
+% Node 16
+\node (node16) [square, fill=orange!20, minimum width=5.5cm, minimum height=2.8cm, xshift=1.3cm, yshift=-21.8cm] {};
+\node [circlenode, font=\large] at (node16.north east) {7};
+\node [text width=5cm, align=left, anchor=west, xshift=1mm, yshift=1mm] at (node16.west) {\textbf{Evaluation of Learning}\\
+\textit{-User validation, \\
+-Scientific validation design, \\
+-Testing \\ \quad(-functional \\ \quad-pedagogical)}};
+
+% Additional nodes east of the curly bracket in Level 3
+\node (node17) [square, fill=orange!20, minimum width=3.5cm, minimum height=1cm, xshift=9.1cm, yshift=-17.9cm, fill=blue!20] {};
+\node [text width=5cm, align=left, anchor=west, xshift=1mm, yshift=1mm, font=\large] at (node17.west) {\textbf{How to develop}};
+
+\node (node18) [square, fill=teal!50, minimum width=3cm, minimum height=1.5cm, xshift=9.1cm, yshift=-19.4cm] {};
+\node [text width=5cm, align=left, anchor=west, xshift=1mm, yshift=1mm, font=\large] at (node18.west) {\textbf{Production \\ development}};
+
+\node (node19) [square, fill=blue!20, minimum width=3.6cm, minimum height=1cm, xshift=9.1cm, yshift=-21.1cm] {};
+\node [text width=5cm, align=left, anchor=west, xshift=1mm, yshift=1mm, font=\large] at (node19.west) {\textbf{How to evaluate}};
+
+\node (node20) [square, fill=teal!50, minimum width=2.5cm, minimum height=1cm, xshift=9.1cm, yshift=-22.4cm] {};
+\node [text width=5cm, align=left, anchor=west, xshift=1mm, yshift=1mm, font=\large] at (node20.west) {\textbf{Validation}};
+
+% Arrows connecting Level 2 and Level 3
+\draw[->] (node15.south) -- (node16.north);
+
+% Manual placement of the curly bracket towards east 
+\draw[decorate, decoration={brace, amplitude=5pt}, xshift=7cm, yshift=-21cm] (0, 4) -- (0, 1) node[midway, right=3mm, font=\scriptsize, align=center] {};
+
+\draw[decorate, decoration={brace, amplitude=5pt}, xshift=7cm, yshift=-24.3cm] (0, 4) -- (0, 1) node[midway, right=3mm, font=\scriptsize, align=center] {};
+
+\begin{pgfonlayer}{background}
+\node (secretcircle) [circlenode, fill=white, xshift=-3.5cm, yshift=-17cm, font=\large] at (0,0) {9};
+
+% Technology on the top left
+\node [font=\Large, fill=gray!50, xshift=-2.9cm, yshift=-17.1cm] {Technology}; 
+\end{pgfonlayer}{background}
+
+% Node to encompass all nodes in Level 3
+\node (level3) [draw, dashed, rectangle, inner sep=10pt, fit=(node15) (node16) (node17) (node18) (node19) (node20) (secretcircle), minimum width=5cm, minimum height=2.5cm] {};
+
+% Arrows connecting Level 1 and Level 2
+\draw[->] (node4.south) -- (node7.north);
+\draw[->] (level2nodes.south) -- (node15.north);
+
+% Additional node under Level 3 in the complete structure
+\node (additionalNode) [square, fill=cyan!25, minimum width=15.55cm, minimum height=1.6cm, xshift=3.4cm, yshift=-24.5cm] {};
+\node [text width=15cm, align=left, anchor=west, xshift=1mm, yshift=1mm, font=\small] at (additionalNode.west) {Analyse user validation, recommendations \\ Revise and update: Instructional goals, user requirements, inferential analysis, Learning Game Design, Production and Development via Rapid Application Development (RAD) approach}; 
+% Node to encompass all nodes in Level 1, Level 2, and Level 3, including the additional node
+%\node (complete) [draw, dashed, rectangle, inner sep=10pt, fit=(level1) (level2) (level3) (additionalNode)] {};
+
+\label{fig:flowchart}
+\end{tikzpicture}
+
+\end{document}
